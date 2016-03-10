@@ -1,0 +1,37 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE hibernate-mapping PUBLIC "-//Hibernate/Hibernate Mapping DTD 3.0//EN"
+"http://hibernate.sourceforge.net/hibernate-mapping-3.0.dtd">
+
+<hibernate-mapping>
+
+<class name="com.me.pojo.Event" table="EVENT">
+
+<id name="name" type="java.lang.String">
+<column name="NAME"></column>
+<generator class="assigned"></generator> 
+</id>
+
+<property name="detailDescription" type="java.lang.String">
+<column name="DETAILDESCRIPTION"></column>
+</property>
+
+<property name="location" type="java.lang.String">
+<column name="LOCATION"></column>
+</property>
+
+<property name="category" type="java.lang.String">
+<column name="CATEGORY"></column>
+</property>
+
+<property name="date" type="java.lang.String">
+<column name="DATE"></column>
+</property>
+
+<set name="commentList" table="COMMENT" inverse="false" lazy="true" fetch="select">
+	<key>
+		<column name="EVENTNAME"></column>
+	</key>
+	<one-to-many class="com.me.pojo.Comment"></one-to-many>
+</set>
+</class>
+</hibernate-mapping>

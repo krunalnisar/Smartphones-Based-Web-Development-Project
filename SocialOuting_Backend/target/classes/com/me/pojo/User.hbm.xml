@@ -1,0 +1,53 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE hibernate-mapping PUBLIC "-//Hibernate/Hibernate Mapping DTD 3.0//EN"
+"http://hibernate.sourceforge.net/hibernate-mapping-3.0.dtd">
+
+<hibernate-mapping>
+
+<class name="com.me.pojo.User" table="USER">
+
+<id name="name" type="java.lang.String">
+<column name="NAME"></column>
+<generator class="assigned"></generator> 
+</id>
+
+<property name="detailDescription" type="java.lang.String">
+<column name="DETAILDESCRIPTION"></column>
+</property>
+
+<property name="gender" type="java.lang.String">
+<column name="GENDER"></column>
+</property>
+
+<property name="imagePath" type="java.lang.String">
+<column name="IMAGEPATH"></column>
+</property>
+
+<property name="username" type="java.lang.String">
+<column name="USERNAME"></column>
+</property>
+
+<property name="password" type="java.lang.String">
+<column name="PASSWORD"></column>
+</property>
+
+<property name="interestList" type="java.lang.String">
+<column name="INTERESTLIST"></column>
+</property>
+
+<set name="eventList" table="EVENT" inverse="false" lazy="true" fetch="select">
+	<key>
+		<column name="USERNAME"></column>
+	</key>
+	<one-to-many class="com.me.pojo.Event"></one-to-many>
+</set>
+
+<set name="contactList" table="CONTACT" inverse="false" lazy="true" fetch="select">
+	<key>
+		<column name="USERNAME"></column>
+	</key>
+	<one-to-many class="com.me.pojo.Contact"></one-to-many>
+</set>
+
+</class>
+</hibernate-mapping>
